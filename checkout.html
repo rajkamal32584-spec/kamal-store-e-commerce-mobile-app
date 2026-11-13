@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>Checkout - Kamal Store</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            max-width: 430px;
+            margin: 0 auto;
+            background: #f5f5f5;
+        }
+    </style>
+</head>
+<body class="relative min-h-screen pb-16">
+    <!-- Top App Bar -->
+    <header class="sticky top-0 z-10 bg-white shadow-sm p-4 flex justify-between items-center">
+        <div class="flex items-center gap-2">
+            <a href="cart.html">
+                <i data-lucide="arrow-left" class="text-gray-600"></i>
+            </a>
+            <h1 class="text-xl font-bold text-indigo-600">Checkout</h1>
+        </div>
+    </header>
+
+    <main class="p-4">
+        <div class="bg-white p-4 rounded-xl shadow-sm mb-4">
+            <h2 class="font-semibold mb-3">Delivery Address</h2>
+            <div class="space-y-3">
+                <div>
+                    <label class="block text-sm text-gray-600 mb-1">Full Name</label>
+                    <input type="text" id="name" class="w-full p-2 border rounded-lg">
+                </div>
+                <div>
+                    <label class="block text-sm text-gray-600 mb-1">Phone Number</label>
+                    <input type="tel" id="phone" class="w-full p-2 border rounded-lg">
+                </div>
+                <div>
+                    <label class="block text-sm text-gray-600 mb-1">Address</label>
+                    <textarea id="address" rows="3" class="w-full p-2 border rounded-lg"></textarea>
+                </div>
+                <div>
+                    <label class="block text-sm text-gray-600 mb-1">Pincode</label>
+                    <input type="text" id="pincode" class="w-full p-2 border rounded-lg">
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white p-4 rounded-xl shadow-sm mb-4">
+            <h2 class="font-semibold mb-3">Payment Method</h2>
+            <div class="space-y-3">
+                <div class="flex items-center gap-3 p-2 border rounded-lg">
+                    <input type="radio" name="payment" id="cod" checked>
+                    <label for="cod" class="flex-1">Cash on Delivery</label>
+                </div>
+                <div class="flex items-center gap-3 p-2 border rounded-lg">
+                    <input type="radio" name="payment" id="card">
+                    <label for="card" class="flex-1">Credit/Debit Card</label>
+                </div>
+                <div class="flex items-center gap-3 p-2 border rounded-lg">
+                    <input type="radio" name="payment" id="upi">
+                    <label for="upi" class="flex-1">UPI Payment</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white p-4 rounded-xl shadow-sm">
+            <h2 class="font-semibold mb-3">Order Summary</h2>
+            <div id="orderSummary" class="space-y-2 mb-4">
+                <!-- Order items will be dynamically inserted here -->
+            </div>
+            <div class="border-t pt-3">
+                <div class="flex justify-between mb-2">
+                    <span class="text-gray-600">Subtotal</span>
+                    <span id="checkoutSubtotal">₹0</span>
+                </div>
+                <div class="flex justify-between mb-2">
+                    <span class="text-gray-600">Delivery</span>
+                    <span>₹49</span>
+                </div>
+                <div class="flex justify-between font-bold text-lg mt-2 pt-2 border-t">
+                    <span>Total</span>
+                    <span id="checkoutTotal">₹49</span>
+                </div>
+            </div>
+            <button onclick="placeOrder()" class="w-full mt-4 bg-indigo-600 text-white py-3 rounded-lg font-medium">
+                Place Order
+            </button>
+        </div>
+    </main>
+
+    <script src="app.js"></script>
+    <script>
+        lucide.createIcons();
+        displayOrderSummary();
+    </script>
+</body>
+</html>
