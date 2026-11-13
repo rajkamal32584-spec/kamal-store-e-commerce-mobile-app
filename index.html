@@ -48,54 +48,54 @@
         <h2 class="text-lg font-semibold mb-4">Popular Products</h2>
         <div class="grid grid-cols-2 gap-4">
             <!-- Product 1 -->
-            <div class="bg-white rounded-xl p-3 shadow-sm">
+            <div class="bg-white rounded-xl p-3 shadow-sm product-card">
                 <img src="https://m.media-amazon.com/images/I/71TPda7cwUL._SL1500_.jpg" 
                      alt="Wireless Earbuds" class="w-full h-32 object-contain mb-2">
                 <h3 class="font-medium text-sm">Boat Airdopes</h3>
                 <p class="text-gray-500 text-xs">Wireless Earbuds</p>
                 <p class="font-bold mt-1">₹1,299</p>
                 <button class="w-full mt-2 bg-indigo-600 text-white py-1 rounded-lg text-sm" 
-                        onclick="addToCart('Boat Airdopes', 1299, 'https://m.media-amazon.com/images/I/71TPda7cwUL._SL1500_.jpg')">
-                    Buy Now
+                        onclick="showProductDetail('Boat Airdopes', 1299, 'https://m.media-amazon.com/images/I/71TPda7cwUL._SL1500_.jpg')">
+                    View Details
                 </button>
             </div>
 
             <!-- Product 2 -->
-            <div class="bg-white rounded-xl p-3 shadow-sm">
+            <div class="bg-white rounded-xl p-3 shadow-sm product-card">
                 <img src="https://m.media-amazon.com/images/I/61L1ItFgFHL._SL1500_.jpg" 
                      alt="Smart Watch" class="w-full h-32 object-contain mb-2">
                 <h3 class="font-medium text-sm">Noise ColorFit</h3>
                 <p class="text-gray-500 text-xs">Smart Watch</p>
                 <p class="font-bold mt-1">₹2,499</p>
                 <button class="w-full mt-2 bg-indigo-600 text-white py-1 rounded-lg text-sm"
-                        onclick="addToCart('Noise ColorFit', 2499, 'https://m.media-amazon.com/images/I/61L1ItFgFHL._SL1500_.jpg')">
-                    Buy Now
+                        onclick="showProductDetail('Noise ColorFit', 2499, 'https://m.media-amazon.com/images/I/61L1ItFgFHL._SL1500_.jpg')">
+                    View Details
                 </button>
             </div>
 
             <!-- Product 3 -->
-            <div class="bg-white rounded-xl p-3 shadow-sm">
+            <div class="bg-white rounded-xl p-3 shadow-sm product-card">
                 <img src="https://m.media-amazon.com/images/I/61BGE6iu4AL._SL1500_.jpg" 
                      alt="Bluetooth Speaker" class="w-full h-32 object-contain mb-2">
                 <h3 class="font-medium text-sm">JBL Go 3</h3>
                 <p class="text-gray-500 text-xs">Speaker</p>
                 <p class="font-bold mt-1">₹3,499</p>
                 <button class="w-full mt-2 bg-indigo-600 text-white py-1 rounded-lg text-sm"
-                        onclick="addToCart('JBL Go 3', 3499, 'https://m.media-amazon.com/images/I/61BGE6iu4AL._SL1500_.jpg')">
-                    Buy Now
+                        onclick="showProductDetail('JBL Go 3', 3499, 'https://m.media-amazon.com/images/I/61BGE6iu4AL._SL1500_.jpg')">
+                    View Details
                 </button>
             </div>
 
             <!-- Product 4 -->
-            <div class="bg-white rounded-xl p-3 shadow-sm">
+            <div class="bg-white rounded-xl p-3 shadow-sm product-card">
                 <img src="https://m.media-amazon.com/images/I/61nzj5gPqLL._SL1500_.jpg" 
                      alt="Power Bank" class="w-full h-32 object-contain mb-2">
                 <h3 class="font-medium text-sm">Ambrane 10000mAh</h3>
                 <p class="text-gray-500 text-xs">Power Bank</p>
                 <p class="font-bold mt-1">₹899</p>
                 <button class="w-full mt-2 bg-indigo-600 text-white py-1 rounded-lg text-sm"
-                        onclick="addToCart('Ambrane Power Bank', 899, 'https://m.media-amazon.com/images/I/61nzj5gPqLL._SL1500_.jpg')">
-                    Buy Now
+                        onclick="showProductDetail('Ambrane Power Bank', 899, 'https://m.media-amazon.com/images/I/61nzj5gPqLL._SL1500_.jpg')">
+                    View Details
                 </button>
             </div>
         </div>
@@ -121,6 +121,50 @@
             <span class="text-xs mt-1">Profile</span>
         </a>
     </nav>
+
+    <!-- Product Detail Modal -->
+    <div id="productModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+        <div class="absolute bottom-0 w-full bg-white rounded-t-3xl p-6 max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-xl font-bold" id="modalProductName">Product Name</h2>
+                <button onclick="closeModal()">
+                    <i data-lucide="x" class="w-6 h-6"></i>
+                </button>
+            </div>
+            <img id="modalProductImage" src="" alt="" class="w-full h-48 object-contain mb-4">
+            <div class="mb-4">
+                <h3 class="font-semibold mb-2">Description</h3>
+                <p id="modalProductDesc" class="text-gray-600 text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+            <div class="mb-4">
+                <h3 class="font-semibold mb-2">Specifications</h3>
+                <ul class="text-sm space-y-1">
+                    <li class="flex justify-between"><span class="text-gray-500">Brand:</span> <span id="modalBrand">Brand</span></li>
+                    <li class="flex justify-between"><span class="text-gray-500">Model:</span> <span id="modalModel">Model</span></li>
+                    <li class="flex justify-between"><span class="text-gray-500">Color:</span> <span id="modalColor">Black</span></li>
+                    <li class="flex justify-between"><span class="text-gray-500">Warranty:</span> <span id="modalWarranty">1 Year</span></li>
+                </ul>
+            </div>
+            <div class="flex justify-between items-center mb-6">
+                <span class="text-xl font-bold" id="modalProductPrice">₹0</span>
+                <div class="flex items-center gap-2">
+                    <button onclick="decreaseQuantity()" class="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center">
+                        <i data-lucide="minus" class="w-4 h-4"></i>
+                    </button>
+                    <span id="productQuantity" class="font-medium">1</span>
+                    <button onclick="increaseQuantity()" class="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center">
+                        <i data-lucide="plus" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
+            <button onclick="addToCartFromModal()" class="w-full bg-indigo-600 text-white py-3 rounded-lg font-medium">
+                Add to Cart
+            </button>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
 
     <script src="app.js"></script>
     <script>
