@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>My Cart - Kamal Store</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            max-width: 430px;
+            margin: 0 auto;
+            background: #f5f5f5;
+        }
+    </style>
+</head>
+<body class="relative min-h-screen pb-16">
+    <!-- Top App Bar -->
+    <header class="sticky top-0 z-10 bg-white shadow-sm p-4 flex justify-between items-center">
+        <div class="flex items-center gap-2">
+            <a href="index.html">
+                <i data-lucide="arrow-left" class="text-gray-600"></i>
+            </a>
+            <h1 class="text-xl font-bold text-indigo-600">My Cart</h1>
+        </div>
+        <div class="flex gap-4">
+            <i data-lucide="bell" class="text-gray-600"></i>
+        </div>
+    </header>
+
+    <main class="p-4">
+        <div id="cartItems" class="space-y-4">
+            <!-- Cart items will be dynamically inserted here -->
+        </div>
+
+        <div class="mt-6 bg-white p-4 rounded-xl shadow-sm">
+            <div class="flex justify-between mb-2">
+                <span class="text-gray-600">Subtotal</span>
+                <span id="subtotal">₹0</span>
+            </div>
+            <div class="flex justify-between mb-2">
+                <span class="text-gray-600">Delivery</span>
+                <span>₹49</span>
+            </div>
+            <div class="flex justify-between font-bold text-lg mt-4 pt-4 border-t">
+                <span>Total</span>
+                <span id="total">₹49</span>
+            </div>
+            <button onclick="proceedToCheckout()" class="w-full mt-4 bg-indigo-600 text-white py-3 rounded-lg font-medium">
+                Proceed to Checkout
+            </button>
+        </div>
+    </main>
+
+    <!-- Bottom Navigation -->
+    <nav class="fixed bottom-0 w-full max-w-[430px] bg-white border-t flex justify-around py-3">
+        <a href="index.html" class="flex flex-col items-center text-gray-500">
+            <i data-lucide="home" class="w-5 h-5"></i>
+            <span class="text-xs mt-1">Home</span>
+        </a>
+        <a href="#" class="flex flex-col items-center text-gray-500">
+            <i data-lucide="search" class="w-5 h-5"></i>
+            <span class="text-xs mt-1">Search</span>
+        </a>
+        <a href="cart.html" class="flex flex-col items-center text-indigo-600 relative">
+            <i data-lucide="shopping-cart" class="w-5 h-5"></i>
+            <span class="text-xs mt-1">Cart</span>
+            <span id="cartCount" class="absolute -top-1 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center hidden">0</span>
+        </a>
+        <a href="#" class="flex flex-col items-center text-gray-500">
+            <i data-lucide="user" class="w-5 h-5"></i>
+            <span class="text-xs mt-1">Profile</span>
+        </a>
+    </nav>
+
+    <script src="app.js"></script>
+    <script>
+        lucide.createIcons();
+        displayCartItems();
+        updateCartCount();
+    </script>
+</body>
+</html>
