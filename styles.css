@@ -35,6 +35,20 @@
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+/* Modal animation */
+#productModal > div {
+    animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
     width: 4px;
